@@ -53,3 +53,5 @@ public sealed class ExampleInspector : Editor
 
 #endif
 ```
+
+![icon460](https://user-images.githubusercontent.com/6134875/192081619-117af690-f1fc-4ae8-9ed6-32d657eac2cd.gif)
