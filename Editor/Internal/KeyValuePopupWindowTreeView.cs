@@ -54,7 +54,7 @@ namespace Kogane.Internal
             // そのため、要素が存在しない場合は表示しないダミーデータを追加する
             m_list = m_dataList
                     .Select( ( x, index ) => new KeyValuePopupWindowItem( index + 1, x ) )
-                    .DefaultIfEmpty( new KeyValuePopupWindowItem( 0, KeyValuePopupWindowData.CreateDummy() ) )
+                    .DefaultIfEmpty( new( 0, KeyValuePopupWindowData.CreateDummy() ) )
                     .ToArray()
                 ;
 

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
@@ -21,9 +21,9 @@ namespace Kogane.Internal
         {
             var state = new TreeViewState();
 
-            m_header = new KeyValuePopupWindowHeader( null );
+            m_header = new( null );
 
-            m_keyValuePopupWindowTreeView = new KeyValuePopupWindowTreeView( DataList, state, m_header )
+            m_keyValuePopupWindowTreeView = new( DataList, state, m_header )
             {
                 searchString = SessionState.GetString( SEARCH_STRING_STATE_KEY, string.Empty ),
                 OnSelected = textData =>
@@ -33,7 +33,7 @@ namespace Kogane.Internal
                 }
             };
 
-            m_searchField                         =  new SearchField();
+            m_searchField                         =  new();
             m_searchField.downOrUpArrowKeyPressed += m_keyValuePopupWindowTreeView.SetFocusAndEnsureSelectedItem;
         }
 

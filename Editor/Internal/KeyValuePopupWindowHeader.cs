@@ -1,4 +1,4 @@
-using UnityEditor.IMGUI.Controls;
+﻿using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 namespace Kogane.Internal
@@ -16,22 +16,22 @@ namespace Kogane.Internal
                     width               = width,
                     minWidth            = width,
                     maxWidth            = width,
-                    headerContent       = new GUIContent( "No." ),
+                    headerContent       = new( "No." ),
                     headerTextAlignment = TextAlignment.Center,
                 },
                 new()
                 {
-                    headerContent       = new GUIContent( "Key" ),
+                    headerContent       = new( "Key" ),
                     headerTextAlignment = TextAlignment.Center,
                 },
                 new()
                 {
-                    headerContent       = new GUIContent( "Value" ),
+                    headerContent       = new( "Value" ),
                     headerTextAlignment = TextAlignment.Center,
                 },
             };
 
-            this.state = new MultiColumnHeaderState( columns );
+            this.state = new( columns );
         }
     }
 }

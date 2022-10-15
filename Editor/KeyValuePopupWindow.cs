@@ -18,7 +18,7 @@ namespace Kogane
             KeyValuePopupWindowInstance.OnSelected = onSelected;
 
             var window = ScriptableObject.CreateInstance<KeyValuePopupWindowInstance>();
-            window.titleContent = new GUIContent( title );
+            window.titleContent = new( title );
             window.ShowAuxWindow();
         }
     }
