@@ -24,6 +24,7 @@ namespace Kogane.Internal
         public KeyValuePopupWindowTreeView
         (
             IReadOnlyList<KeyValuePopupWindowData> dataList,
+            KeyValuePopupWindowData                selectedData,
             TreeViewState                          state,
             MultiColumnHeader                      header
         ) : base( state, header )
@@ -38,6 +39,10 @@ namespace Kogane.Internal
 
             header.ResizeToFit();
             header.SetSorting( 0, true );
+
+            var selectedItem = Array.Find( m_list, x => x.TextId == selectedData.Key && x.Text == selectedData.Value );
+            if ( selectedItem == null ) return;
+            SetSelection( new[] { selectedItem.id } );
         }
 
         protected override float GetCustomRowHeight( int row, TreeViewItem treeViewItem )

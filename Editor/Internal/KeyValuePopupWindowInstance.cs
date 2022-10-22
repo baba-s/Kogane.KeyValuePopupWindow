@@ -10,8 +10,9 @@ namespace Kogane.Internal
     {
         private const string SEARCH_STRING_STATE_KEY = "KeyValuePopupWindow_SearchString";
 
-        public static IReadOnlyList<KeyValuePopupWindowData> DataList   { private get; set; }
-        public static Action<KeyValuePopupWindowData>        OnSelected { private get; set; }
+        public static IReadOnlyList<KeyValuePopupWindowData> DataList     { private get; set; }
+        public static KeyValuePopupWindowData                SelectedData { private get; set; }
+        public static Action<KeyValuePopupWindowData>        OnSelected   { private get; set; }
 
         private KeyValuePopupWindowHeader   m_header;
         private SearchField                 m_searchField;
@@ -23,7 +24,7 @@ namespace Kogane.Internal
 
             m_header = new( null );
 
-            m_keyValuePopupWindowTreeView = new( DataList, state, m_header )
+            m_keyValuePopupWindowTreeView = new( DataList, SelectedData, state, m_header )
             {
                 searchString = SessionState.GetString( SEARCH_STRING_STATE_KEY, string.Empty ),
                 OnSelected = textData =>

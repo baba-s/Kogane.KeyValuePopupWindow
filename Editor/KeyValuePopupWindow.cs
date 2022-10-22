@@ -10,12 +10,14 @@ namespace Kogane
         public static void Open
         (
             string                                 title,
-            IReadOnlyList<KeyValuePopupWindowData> textDataList,
-            Action<KeyValuePopupWindowData>        onSelected
+            IReadOnlyList<KeyValuePopupWindowData> dataList,
+            Action<KeyValuePopupWindowData>        onSelected,
+            KeyValuePopupWindowData                selectedData = default
         )
         {
-            KeyValuePopupWindowInstance.DataList   = textDataList;
-            KeyValuePopupWindowInstance.OnSelected = onSelected;
+            KeyValuePopupWindowInstance.DataList     = dataList;
+            KeyValuePopupWindowInstance.SelectedData = selectedData;
+            KeyValuePopupWindowInstance.OnSelected   = onSelected;
 
             var window = ScriptableObject.CreateInstance<KeyValuePopupWindowInstance>();
             window.titleContent = new( title );
