@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEditor.IMGUI.Controls;
 
 namespace Kogane.Internal
