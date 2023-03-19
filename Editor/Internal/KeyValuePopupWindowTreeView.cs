@@ -107,7 +107,7 @@ namespace Kogane.Internal
 
             var item = ( KeyValuePopupWindowItem )treeViewItem;
 
-            return item.IsMatch( search );
+            return search.Split( ' ' ).All( x => item.IsMatch( x ) );
         }
 
         private void SortItems( MultiColumnHeader header )
