@@ -6,16 +6,17 @@ using UnityEditor.IMGUI.Controls;
 
 namespace Kogane.Internal
 {
+    internal enum ColumnType
+    {
+        NUMBER,
+        TEXT_ID,
+        TEXT,
+    }
+
     internal sealed class KeyValuePopupWindowTreeView : TreeView
     {
-        private enum ColumnType
-        {
-            NUMBER,
-            TEXT_ID,
-            TEXT,
-        }
-
         private readonly IReadOnlyList<KeyValuePopupWindowData> m_dataList;
+        private readonly MultiColumnHeader                      m_header;
 
         private KeyValuePopupWindowItem[] m_list;
 
@@ -30,6 +31,7 @@ namespace Kogane.Internal
         ) : base( state, header )
         {
             m_dataList = dataList;
+            m_header   = header;
 
             showAlternatingRowBackgrounds = true;
 
@@ -58,8 +60,8 @@ namespace Kogane.Internal
             // 要素が存在しない場合、 TreeView は例外を発生する
             // そのため、要素が存在しない場合は表示しないダミーデータを追加する
             m_list = m_dataList
-                    .Select( ( x, index ) => new KeyValuePopupWindowItem( index + 1, x ) )
-                    .DefaultIfEmpty( new( 0, KeyValuePopupWindowData.CreateDummy() ) )
+                    .Select( ( x, index ) => new KeyValuePopupWindowItem( index + 1, x, m_header ) )
+                    .DefaultIfEmpty( new( 0, KeyValuePopupWindowData.CreateDummy(), m_header ) )
                     .ToArray()
                 ;
 
